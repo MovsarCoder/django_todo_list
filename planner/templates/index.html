@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+  <h1>Список задач</h1>
+
+
+  <p><b>Всего задач: {{ total }} | Выполнено: {{ done_count }}</b></p>
+
+  <p><a href="">Создать новую задачу</a></p>
+
+  <table border="1" cellpadding="5">
+    <tr>
+      <th>Название</th>
+      <th>Категория</th>
+      <th>Приоритет</th>
+      <th>Срок</th>
+      <th>Статус</th>
+    </tr>
+
+    {% for task in tasks %}
+    <tr>
+      <td> {{ task.title }} </td>
+      <td> {{ task.category }} </td>
+      <td> {{ task.priority }} </td>
+      {% if task.due_date %}
+        <td> Готов </td>
+
+      {% else %}
+        <td> В процессе </td>
+      {% endif %}
+      <td> {{ task.is_done }} </td>
+    </tr>
+    {% endfor %}
+
+  </table>
+
+</body>
+</html>

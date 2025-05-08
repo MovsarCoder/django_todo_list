@@ -1,0 +1,6 @@
+django-admin startproject core .
+python manage.py startapp planner
+python manage.py runserver
+python manage.py createsuperuser
+python manage.py makemigrations
+python manage.py migrate
