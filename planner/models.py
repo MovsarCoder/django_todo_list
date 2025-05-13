@@ -10,13 +10,6 @@ class Category(models.Model):
         return self.name
 
 
-class Tag(models.Model): # средний, срочный, очень срочный
-    name = models.CharField(max_length=100, verbose_name='Тег')
-
-    def __str__(self):
-        return self.name
-
-
 class Priority(models.Model):
     level = models.CharField(max_length=50, choices=[
         ('high', 'Высокий'),
@@ -37,7 +30,6 @@ class Priority(models.Model):
 class Task(models.Model):
     title = models.CharField(max_length=200, verbose_name='Имя задачи')
     description = models.TextField(blank=True)  # Можно оставить поле пустым
-    tags = models.ManyToManyField('Tag', blank=True)
     category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True)
     priority = models.ForeignKey('Priority', on_delete=models.SET_NULL, null=True)
     is_done = models.BooleanField(default=False)
